@@ -8,9 +8,7 @@
 
 - [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-![Line Chart Demo](/images/chart-generator-demo1.png)
-![Rectangle Chart Demo](/images/chart-generator-demo2.png)
-![Bars Chart Demo](/images/chart-generator-demo3.png)
+![Charts Demo](/images/chart-generator-demo.png)
 
 ### Generate your own charts sending:
 
@@ -57,7 +55,7 @@ i.e
 > periodName: "Period", //string
 > periods: 6, // number
 > showName: true, // boolean - true by default
-> sortBy: "quantityDesc", // string - quantityDesc, quantityAsc, alphaDesc, alphaAsc
+> sortBy: "none", // string - none, quantityDesc, quantityAsc, alphaDesc, alphaAsc
 > type: "bars", // string - rectangle, bars, line
-> unit: "units", string
+> unit: "units", // string
 > }

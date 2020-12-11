@@ -35,7 +35,7 @@ export const defaultConfig = {
   periodName: "Period",
   periods: 6,
   showName: true,
-  sortBy: "quantityDesc",
-  type: "bars", // rectangle, bars, line, race, pie
+  sortBy: "none",
+  type: "line", // rectangle, bars, line, race, pie
   unit: "units",
 };

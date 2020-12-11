@@ -67,8 +67,10 @@ const Button = styled.button`
   color: #fff;
   cursor: pointer;
   display: flex;
-  padding: 16px 48px;
+  justify-content: space-between;
+  padding: 16px 36px;
   transition: all 0.2s ease;
+  min-width: 270px;
   &:hover {
     background: darkgreen;
   }
