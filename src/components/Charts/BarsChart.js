@@ -1,44 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { getPercentage } from "../../utils/utils";
+import { getPercentage, sortBy } from "../../utils/utils";
 import DetailsBox from "../DetailsBox";
+import PeriodsSelector from "../PeriodsSelector";
 
 export default function BarsChart({ chartStyle, config, data, periodsTotal }) {
   const { visibility, width } = chartStyle;
+  const [currentPeriod, setCurrentPeriod] = useState(0);
+  const [sortedData, setSortedData] = useState(data);
+
+  const handleNext = () => {
+    if (currentPeriod < config.periods - 1) {
+      setCurrentPeriod(currentPeriod + 1);
+      setSortedData(sortBy(data, config.sortBy, currentPeriod + 1));
+    }
+  };
+  const handlePrevious = () => {
+    if (currentPeriod > 0) {
+      setCurrentPeriod(currentPeriod - 1);
+      setSortedData(sortBy(data, config.sortBy, currentPeriod - 1));
+    }
+  };
   return (
-    <ChartContainer>
-      {data.map(({ color, name, quantity }) => {
-        const lastValue = quantity[quantity.length - 1];
-        return (
-          <ChartSection
-            bg={color}
-            key={name}
-            visibility={visibility}
-            width={`${
-              width === "0"
-                ? width
-                : getPercentage(periodsTotal[quantity.length - 1], lastValue)
-            }%`}
-          >
-            <span>
-              {name}
-              <DetailsBox
-                color={color}
-                name={name}
-                percentage={getPercentage(
-                  periodsTotal[quantity.length - 1],
-                  lastValue
-                )}
-                quantity={lastValue}
-                unit={config.unit}
-              />
-            </span>
-          </ChartSection>
-        );
-      })}
-    </ChartContainer>
+    <Wrapper visibility={visibility} width={width}>
+      <PeriodsSelector
+        config={config}
+        currentPeriod={currentPeriod}
+        handleNext={handleNext}
+        handlePrevious={handlePrevious}
+      />
+      <ChartContainer>
+        {sortedData.map(({ color, name, quantity }) => {
+          const lastValue = quantity[quantity.length - 1];
+          return (
+            <ChartSection
+              bg={color}
+              key={name}
+              visibility={visibility}
+              width={`${
+                width === "0"
+                  ? width
+                  : getPercentage(periodsTotal[quantity.length - 1], lastValue)
+              }%`}
+            >
+              <span>
+                {name}
+                <DetailsBox
+                  color={color}
+                  name={name}
+                  percentage={getPercentage(
+                    periodsTotal[quantity.length - 1],
+                    lastValue
+                  )}
+                  quantity={lastValue}
+                  unit={config.unit}
+                />
+              </span>
+            </ChartSection>
+          );
+        })}
+      </ChartContainer>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.6s ease-out;
+  visibility: ${({ visibility }) => visibility};
+  width: ${({ width }) => width};
+`;
 
 const ChartContainer = styled.div`
   align-items: flex-start;

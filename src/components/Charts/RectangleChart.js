@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { getPercentage, sortBy } from "../../utils/utils";
 import DetailsBox from "../DetailsBox";
+import PeriodsSelector from "../PeriodsSelector";
 
 export default function RectangleChart({
   chartStyle,
@@ -27,13 +28,12 @@ export default function RectangleChart({
 
   return (
     <Wrapper visibility={chartStyle.visibility} width={chartStyle.width}>
-      <PeriodsHandler>
-        <button onClick={handlePrevious}>{"<"}</button>
-        <CurrentPeriod>
-          {config.periodName} {`${currentPeriod + 1}/${config.periods}`}
-        </CurrentPeriod>
-        <button onClick={handleNext}>{">"}</button>
-      </PeriodsHandler>
+      <PeriodsSelector
+        config={config}
+        currentPeriod={currentPeriod}
+        handleNext={handleNext}
+        handlePrevious={handlePrevious}
+      />
       <ChartContainer
         visibility={chartStyle.visibility}
         width={chartStyle.width}
@@ -72,23 +72,6 @@ const Wrapper = styled.div`
   transition: all 0.6s ease-out;
   visibility: ${({ visibility }) => visibility};
   width: ${({ width }) => width};
-`;
-
-const PeriodsHandler = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  width: 90%;
-  > button {
-    background: none;
-    cursor: pointer;
-  }
-`;
-
-const CurrentPeriod = styled.p`
-  font-size: 18px;
-  margin: 0;
 `;
 
 const ChartContainer = styled.div`
