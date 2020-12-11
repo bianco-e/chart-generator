@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getPeriodsTotal } from "./utils/utils";
 import { fakeData, defaultConfig } from "./utils/default";
+import GraphicIcon from "./components/svg/GraphicIcon";
 import RectangleChart from "./components/Charts/RectangleChart";
 import BarsChart from "./components/Charts/BarsChart";
 import LineChart from "./components/Charts/LineChart";
@@ -34,7 +35,8 @@ export default function App({ data = fakeData, config = defaultConfig }) {
       <Button
         onClick={() => setChartStyle({ visibility: "visible", width: "100%" })}
       >
-        Generate chart!
+        <span>Generate chart!</span>
+        <GraphicIcon />
       </Button>
       <ChartContainer>
         <Chart
@@ -58,7 +60,24 @@ const Wrapper = styled.div`
 `;
 
 const Button = styled.button`
+  align-items: center;
+  background: green;
+  border: 0;
+  border-radius: 15px;
+  color: #fff;
   cursor: pointer;
+  display: flex;
+  padding: 16px 48px;
+  transition: all 0.2s ease;
+  &:hover {
+    background: darkgreen;
+  }
+  &:active {
+    box-shadow: 0px 0px 15px 1px rgba(30, 30, 30, 0.5);
+  }
+  > span {
+    margin-right: 10px;
+  }
 `;
 
 const ChartContainer = styled.div`
