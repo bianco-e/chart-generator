@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getPercentage, sortBy } from "../../utils/utils";
 import DetailsBox from "../DetailsBox";
@@ -8,6 +8,10 @@ export default function BarsChart({ chartStyle, config, data, periodsTotal }) {
   const { visibility, width } = chartStyle;
   const [currentPeriod, setCurrentPeriod] = useState(0);
   const [sortedData, setSortedData] = useState(data);
+
+  useEffect(() => {
+    setSortedData(sortBy(data, config.sortBy, 0));
+  }, []);
 
   const handleNext = () => {
     if (currentPeriod < config.periods - 1) {
@@ -31,7 +35,8 @@ export default function BarsChart({ chartStyle, config, data, periodsTotal }) {
       />
       <ChartContainer>
         {sortedData.map(({ color, name, quantity }) => {
-          const lastValue = quantity[quantity.length - 1];
+          const currentValue = quantity[currentPeriod];
+          const currentTotal = periodsTotal[currentPeriod];
           return (
             <ChartSection
               bg={color}
@@ -40,7 +45,7 @@ export default function BarsChart({ chartStyle, config, data, periodsTotal }) {
               width={`${
                 width === "0"
                   ? width
-                  : getPercentage(periodsTotal[quantity.length - 1], lastValue)
+                  : getPercentage(currentTotal, currentValue)
               }%`}
             >
               <span>
@@ -48,11 +53,8 @@ export default function BarsChart({ chartStyle, config, data, periodsTotal }) {
                 <DetailsBox
                   color={color}
                   name={name}
-                  percentage={getPercentage(
-                    periodsTotal[quantity.length - 1],
-                    lastValue
-                  )}
-                  quantity={lastValue}
+                  percentage={getPercentage(currentTotal, currentValue)}
+                  quantity={currentValue}
                   unit={config.unit}
                 />
               </span>

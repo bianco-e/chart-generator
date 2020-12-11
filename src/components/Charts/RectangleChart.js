@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getPercentage, sortBy } from "../../utils/utils";
 import DetailsBox from "../DetailsBox";
@@ -12,6 +12,10 @@ export default function RectangleChart({
 }) {
   const [currentPeriod, setCurrentPeriod] = useState(0);
   const [sortedData, setSortedData] = useState(data);
+
+  useEffect(() => {
+    setSortedData(sortBy(data, config.sortBy, 0));
+  }, []);
 
   const handleNext = () => {
     if (currentPeriod < config.periods - 1) {
