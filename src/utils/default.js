@@ -36,6 +36,6 @@ export const defaultConfig = {
   periods: 6,
   showName: true,
   sortBy: "quantityDesc",
-  type: "line", // rectangle, bars, line, race, pie
+  type: "bars", // rectangle, bars, line, race, pie
   unit: "units",
 };
