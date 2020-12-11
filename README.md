@@ -8,13 +8,13 @@
 
 - [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-![Charts Demo](/images/chart-generator-demo.png)
+![Charts Demo](/images/chart-generator-demo.gif)
 
 ### Generate your own charts sending:
 
 - a _data array_ of objects specifying `name` `quantity` (array of numbers per period) and `color`
 
-i.e
+*i.e*
 
 > [{
 > color: "red",
@@ -49,13 +49,20 @@ i.e
 
 - a _config object_ specifying `periodName`, `periods`, `showName`, `sortBy`, `type`, `unit`,
 
-i.e
+*i.e*
 
 > {
+>
 > periodName: "Period", //string
+>
 > periods: 6, // number
+>
 > showName: true, // boolean - true by default
+>
 > sortBy: "none", // string - none, quantityDesc, quantityAsc, alphaDesc, alphaAsc
+>
 > type: "bars", // string - rectangle, bars, line
+>
 > unit: "units", // string
+>
 > }
