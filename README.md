@@ -8,7 +8,7 @@
 
 - [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-![Charts Demo](/images/chart-generator-demo.gif)
+![Charts Demo](https://user-images.githubusercontent.com/56521196/101913811-41d2b200-3ba2-11eb-8786-0aaa2b9a7832.gif)
 
 ### Generate your own charts sending:
 
