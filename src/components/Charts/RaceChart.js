@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { getPercentage } from "../../utils/utils";
-import DetailsBox from "../DetailsBox";
+// import { getPercentage } from "../../utils/utils";
+// import DetailsBox from "../DetailsBox";
 
-export default function RaceChart() {
+export default function RaceChart({ chartStyle, config, data, periodsTotal }) {
   return <ChartContainer></ChartContainer>;
 }
 

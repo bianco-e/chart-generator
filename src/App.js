@@ -26,7 +26,7 @@ export default function App({ data = fakeData, config = defaultConfig }) {
 
   useEffect(() => {
     setPeriodsTotal(getPeriodsTotal(data, config.periods));
-  }, []);
+  }, [data, config.periods]);
 
   const Chart = types[config.type];
 
