@@ -11,7 +11,7 @@ export default function BarsChart({ chartStyle, config, data, periodsTotal }) {
 
   useEffect(() => {
     setSortedData(sortBy(data, config.sortBy, 0));
-  }, []);
+  }, [data, config.sortBy]);
 
   const handleNext = () => {
     if (currentPeriod < config.periods - 1) {

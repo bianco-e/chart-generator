@@ -42,7 +42,7 @@ export default function LineChart({ chartStyle, config, data, periodsTotal }) {
       setContainerWidth(containerRef.current.offsetWidth);
       setContainerHeight(containerRef.current.offsetHeight);
     }
-  }, [data]);
+  }, [data, containerRef]);
 
   return (
     <ChartContainer ref={containerRef} visibility={chartStyle.visibility}>
