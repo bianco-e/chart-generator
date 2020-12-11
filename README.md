@@ -12,7 +12,7 @@
 
 ### Generate your own charts sending:
 
-- a _data array_ of objects specifying `name` `quantity` (array of numbers per period) and `color`
+- a _data array_ of objects specifying `name` `quantity` (array of numbers per period) and `color`:
 
 *i.e*
 
@@ -56,7 +56,7 @@
 >
 > }]
 
-- a _config object_ specifying `periodName`, `periods`, `showName`, `sortBy`, `type`, `unit`,
+- a _config object_ specifying `periodName`, `periods`, `showName`, `sortBy`, `type`, `unit`:
 
 *i.e*
 
